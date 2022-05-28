@@ -90,6 +90,40 @@
 	margin-bottom: 10px;
 }
 
+.mid_info {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
+	top: 100px;
+	position: relative;
+}
+
+.algorithm {
+	font-family: 'Poppins', sans-serif;
+	color: #00274c;
+	text-align: justify;
+	background: #e3e3e3;
+	position: relative;
+	left: 2%;
+	border-radius: 15px;
+	padding: 10px;
+	width: 50%;
+}
+
+.game_play {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 2%;
+	width: 45%;
+	background: #00274c;
+	border-radius: 20px;
+	position: relative;
+	right: 2%;
+	padding: 30px;
+}
+
 @media (max-width: 1000px){
 	.vid1 {
 		margin-bottom: 15px;

@@ -32,5 +32,16 @@
 				</p>
 			</div>
 		</div>
+		<br>
+		<div class = "mid_info">
+			<div class = "algorithm">
+				<div class = "text">Cat's Algorithm</div>
+				The cat was programmed to seek the shortest path towards the mouse with the idea inspired by <b><a href = "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target = "_blank">dijkstra's algorithm</a></b>. A continuous loop is run which implements the necessary functions to keep the game going such as checking which of the mouse's directional buttons are pressed. For every certain number of iterations in the loop, the cat will check and update its path towards the mouse. As the game keeps going and the user increases levels, the frequency at which the cat updates the shortest path will increase to give the player the feeling that the cat is getting smarter. The cat was programmed to only exist within the 10 by 14 tile maze and as you may notice it never walks past the outer green perimeter. In order to prevent the cat from walking through walls, the length of path coded into the black wall tiles was 140 while the white path tiles had a length of 1. Therefore, when dijkstra's algorithm is used to evaluate the shortest path between the cat and mouse, there will never be a path determined that will lead the cat to go through a wall. Another problem we had to solve was working with discrete (tile) vs continuous (pixel) values. As you may notice, the cat and mouse are not hopping from one tile to another and they may appear to be in between two tiles at times. We therefore had to convert back and forth between their specific pixel location and the closest tile such that the shortest path could be evaluated properly.
+			</div>
+
+			<div class = "game_play">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/tFBFJbj3igg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
 	</body>
 </html>
