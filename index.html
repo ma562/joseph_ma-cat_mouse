@@ -25,10 +25,12 @@
 			<div class = "information">
 				<div class = "text">About</div>
 				<p>
-					The game involves a cat which is programmed to be an "AI" with the ability to move autonomously and automatically to chase the mouse (controlled by the user through push buttons). The Cat & Mouse game was finalized on a hand-held PCB assembly. Background music is played through an audio jack and the display screen is designed to be a selective menu with touch screen.<br><br>
-					An STM32F091RCT6 ARM microcontroller with 256 KB Flash memory and 32KB SRAM was used to program the game. SPI (Serial Peripheral Interface) was used to send data between the microcontroller and LCD display. DAC (Digital to Analog converter) was used to convert and generate music. ADC (Analog to Digital converter) was used to communicate the touch screen data. Timers and interrupts were used to listen and respond to any instructions depending on what the user is doing (e.g. pressing a button in the menu). GPIO was used to receive input from push buttons.  <br><br>
+					The game involves a cat which is programmed to be an "AI" with the ability to move autonomously and automatically to chase the mouse (controlled by the user through push buttons). The Cat & Mouse game was prototyped on a breadboard and finalized on a hand-held PCB assembly. Background music is played through an audio jack and the display screen is designed to be a selective menu with touch screen.<br><br>
+					An STM32F091RCT6 ARM microcontroller with 256 KB Flash memory and 32KB SRAM was used to program the game. SPI (Serial Peripheral Interface) was used to send data between the microcontroller and LCD display. The type of touch screen used was a 3.2" ILI9341 TFT LCD with breakout board from Adafruit, which had a display of 320*240 resolution. It had a four-wire resistive touchscreen and we wrote a simple driver for it to detect single touch locations. DAC (Digital to Analog converter) was used to convert and generate music. ADC (Analog to Digital converter) was used to communicate the touch screen data. Timers and interrupts were used to listen and respond to any instructions depending on what the user was doing (e.g. pressing a button in the menu). GPIO was used to receive input from push buttons.  <br><br>
 
-					The type of touch screen is 3.2" ILI9341 TFT LCD with breakout board from Adafruit, which has the display of 320*240 resolution. It is a four-wire resistive touchscreen and we wrote a simple driver for it to detect single touch locations. <br>
+					Click <b><a href = "https://github.com/ma562/ece362_finalproj" target = "_blank">here</a></b> to view the source code. Most of the algorithm can be found in ece362_finalproj/src/support.c.
+
+					 <br>
 				</p>
 			</div>
 		</div>
@@ -36,11 +38,27 @@
 		<div class = "mid_info">
 			<div class = "algorithm">
 				<div class = "text">Cat's Algorithm</div>
-				The cat was programmed to seek the shortest path towards the mouse with the idea inspired by <b><a href = "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target = "_blank">dijkstra's algorithm</a></b>. A continuous loop is run which implements the necessary functions to keep the game going such as checking which of the mouse's directional buttons are pressed. For every certain number of iterations in the loop, the cat will check and update its path towards the mouse. As the game keeps going and the user increases levels, the frequency at which the cat updates the shortest path will increase to give the player the feeling that the cat is getting smarter. The cat was programmed to only exist within the 10 by 14 tile maze and as you may notice it never walks past the outer green perimeter. In order to prevent the cat from walking through walls, the length of path coded into the black wall tiles was 140 while the white path tiles had a length of 1. Therefore, when dijkstra's algorithm is used to evaluate the shortest path between the cat and mouse, there will never be a path determined that will lead the cat to go through a wall. Another problem we had to solve was working with discrete (tile) vs continuous (pixel) values. As you may notice, the cat and mouse are not hopping from one tile to another and they may appear to be in between two tiles at times. We therefore had to convert back and forth between their specific pixel location and the closest tile such that the shortest path could be evaluated properly.
+				The cat was programmed to seek the shortest path towards the mouse with the idea inspired by <b><a href = "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target = "_blank">dijkstra's algorithm</a></b>. A continuous loop is run which implements the necessary functions to keep the game going such as checking which of the mouse's directional buttons are pressed. For every certain number of iterations in the loop, the cat will check and update its path towards the mouse. As the game keeps going and the user increases levels, the frequency at which the cat updates the shortest path will increase to give the player the feeling that the cat is getting smarter. The cat was programmed to only exist within the 14 by 10 tile maze and as you may notice it never walks past the outer green perimeter. In order to prevent the cat from walking through walls, the length of path coded into the black wall tiles was 140 while the white path tiles had a length of 1. Therefore, when dijkstra's algorithm is used to evaluate the shortest path between the cat and mouse, there will never be a path determined that will lead the cat to go through a wall. Another problem we had to solve was working with tile vs pixel values. As you may notice, the cat and mouse are not hopping from one tile to another and they may appear to be in between two tiles at times. We therefore had to convert back and forth between their specific pixel location and the closest tile such that the shortest path could be evaluated successfully.
 			</div>
-
 			<div class = "game_play">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/tFBFJbj3igg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+		<br>
+		<div class = "bottom_info">
+			<div class = "initial_testing">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/xLcG2L6hbgQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			<div class = "algorithm2">
+				<div class = "text">Mouse Mechanics</div>
+				The input push button values are read from the GPIO port input data register and the mouse will then move towards the corresponding direction. Unlike the cat, the mouse's method of wall detection involved a more brute force approach. The challenge in this part was to ensure that not even a portion of the mouse would be able to overlap with a wall. Since both the mouse's and wall's location were only located at a single pixel coordinate, we could not just check if the two points were the same to detect wall collision obviously due to the fact that both the wall and mouse were larger than one pixel in size. Therefore each black wall tile had a "radius" of no entry to account for both the size of the wall and mouse.
+			</div>
+		</div>
+		<br>
+		<div class = "additional_info">
+			<div class = "algorithm3">
+				<div class = "text">Map and Wall Generation</div>
+				Apart from implementing the shortest path algorithm, one of the biggest problems faced was including several maps in the game. Towards the end, we were able to include 30+ hard coded maps. Because there was not enough flash memory to store 30 individual wallpaper backgrounds, we had to condense the information into a matrix data structure. The inner maze consisted of 14 by 10 tiles. However, we were able to further condense each map matrix into a 12 by 8 given that we will never place a wall directly next to the outer green blocks. With this done, we simply filled in each matrix coordinate with the appropriate binary value (eg. 0 for a path 1 for a wall). For each map chosen during gameplay, the selected matrix will be passed to a variety of functions in order to inform them of where a wall or path is. Using this method, the functions were able to determine where to place black/white block tiles, where to assign a length of 1 or 140 for the cat's algorithm and where to allow the mouse to go. 
 			</div>
 		</div>
 	</body>

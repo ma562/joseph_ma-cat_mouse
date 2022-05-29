@@ -124,14 +124,69 @@
 	padding: 30px;
 }
 
+.bottom_info {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
+	top: 100px;
+	position: relative;
+}
+
+.initial_testing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	left: 2%;
+	width: 45%;
+	background: #00274c;
+	border-radius: 20px;
+	position: relative;
+	right: 2%;
+	padding: 30px;
+}
+
+.algorithm2 {
+	font-family: 'Poppins', sans-serif;
+	color: #00274c;
+	text-align: justify;
+	background: #e3e3e3;
+	position: relative;
+	right: 2%;
+	border-radius: 15px;
+	padding: 10px;
+	width: 50%;
+}
+
+.additional_info {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
+	top: 100px;
+	position: relative;
+}
+
+.algorithm3 {
+	font-family: 'Poppins', sans-serif;
+	color: #00274c;
+	text-align: justify;
+	background: #e3e3e3;
+	position: relative;
+	left: 2%;
+	border-radius: 15px;
+	padding: 10px;
+	width: 50%;
+}
+
 @media (max-width: 1000px){
-	.vid1 {
+	.initial_testing, .algorithm, .vid1 {
 		margin-bottom: 15px;
 	}
-	.information {
+	.algorithm2, .algorithm, .information {
 		padding: 15px;
 	}
-	.vid1, .information {
+	.initial_testing, .algorithm2, .algorithm, .game_play, .vid1, .information {
 		flex: 100%;
 		left: 0%;
 		right: 0%;
