@@ -13,6 +13,10 @@
 	margin: auto;
 }
 
+.pic {
+	border-radius: 30px;
+}
+
 /*navbar*/
 .navbar {
 	z-index: 2;
@@ -179,14 +183,20 @@
 	width: 50%;
 }
 
+.image1 {
+	position: relative;
+	width: 45%;
+	right: 2%;
+}
+
 @media (max-width: 1000px){
-	.initial_testing, .algorithm, .vid1 {
+	.algorithm3, .initial_testing, .algorithm, .vid1 {
 		margin-bottom: 15px;
 	}
-	.algorithm2, .algorithm, .information {
+	.algorithm3, .algorithm2, .algorithm, .information {
 		padding: 15px;
 	}
-	.initial_testing, .algorithm2, .algorithm, .game_play, .vid1, .information {
+	.algorithm3, .image1, .initial_testing, .algorithm2, .algorithm, .game_play, .vid1, .information {
 		flex: 100%;
 		left: 0%;
 		right: 0%;

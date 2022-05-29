@@ -51,7 +51,7 @@
 			</div>
 			<div class = "algorithm2">
 				<div class = "text">Mouse Mechanics</div>
-				The input push button values are read from the GPIO port input data register and the mouse will then move towards the corresponding direction. Unlike the cat, the mouse's method of wall detection involved a more brute force approach. The challenge in this part was to ensure that not even a portion of the mouse would be able to overlap with a wall. Since both the mouse's and wall's location were only located at a single pixel coordinate, we could not just check if the two points were the same to detect wall collision obviously due to the fact that both the wall and mouse were larger than one pixel in size. Therefore each black wall tile had a "radius" of no entry to account for both the size of the wall and mouse.
+				The input push button values are read in from the GPIO port input data register and the mouse will then move towards the corresponding direction. Unlike the cat, the mouse's method of wall detection involved a more brute force approach. The challenge in this part was to ensure that not even a portion of the mouse would be able to overlap with a wall. Since both the mouse's and wall's location were only located at a single pixel coordinate, we could not just check if the two points were the same to detect wall collision obviously due to the fact that both the wall and mouse were larger than one pixel in size. Therefore each black wall tile had a "radius" of no entry to account for both the size of the wall and mouse.
 			</div>
 		</div>
 		<br>
@@ -59,6 +59,9 @@
 			<div class = "algorithm3">
 				<div class = "text">Map and Wall Generation</div>
 				Apart from implementing the shortest path algorithm, one of the biggest problems faced was including several maps in the game. Towards the end, we were able to include 30+ hard coded maps. Because there was not enough flash memory to store 30 individual wallpaper backgrounds, we had to condense the information into a matrix data structure. The inner maze consisted of 14 by 10 tiles. However, we were able to further condense each map matrix into a 12 by 8 given that we will never place a wall directly next to the outer green blocks. With this done, we simply filled in each matrix coordinate with the appropriate binary value (eg. 0 for a path 1 for a wall). For each map chosen during gameplay, the selected matrix will be passed to a variety of functions in order to inform them of where a wall or path is. Using this method, the functions were able to determine where to place black/white block tiles, where to assign a length of 1 or 140 for the cat's algorithm and where to allow the mouse to go. 
+			</div>
+			<div class = "image1">
+				<img src = "images/maze.jpg" class = "pic" width = "100%" alt = "">
 			</div>
 		</div>
 	</body>
