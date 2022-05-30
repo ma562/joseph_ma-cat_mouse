@@ -292,9 +292,6 @@
 		left: 0%;
 		right: 0%;
 	}
-}
-
-@media (max-width: 1000px){
 	.top_info {
 		top: 80px;
 	}
