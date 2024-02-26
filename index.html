@@ -65,6 +65,38 @@
 			</div>
 		</div>
 		<br>
+		<div class = "spi_info">
+			<div class = "spi">
+				<div class = "text">SPI (Serial Peripheral Interface)</div>
+				SPI was used to communicate between the microcontroller and the LCD display. In SPI communication, the two devices communicating are typically named <b>Master</b> and <b>Slave</b>. <b>Master</b> refers to the device which configures the clock speed, data format and other parameters for communication. The <b>Slave</b> refers to the other device which is able to receive information from the <b>Master</b> but (in some cases) also send back information to the Master. In this case, the microcontroller serves as Master and the LCD display serves as the slave.
+
+				The SPI configuration usually consists of a 4 wire interface. <br><br>
+				<ul class = "shift">
+					<li><b>MOSI</b>(Master Out Slave In): </li> Bits of information are sent <b>OUT</b> from the <b>Master</b> and <b>IN</b> the <b>Slave</b>.
+					<li><b>MISO</b>(Master In Slave Out): </li> Bits of information are sent <b>OUT</b> from the <b>Slave</b> and <b>IN</b> the <b>Master</b>.
+					<li><b>SCLK</b>(Serial Clock or SCK): </li> Controlled by the Master to synchronize data transmission. Typically 1 bit is sent for every clock pulse. 
+					<li><b>NSS</b>(Negative Slave Select or CS/Chip Select): Selects which slave to communicate with. Starts and ends communcation. The logic is active-low so when it is low, communication begins and when it is high, communcation ends.
+				</ul>
+				<br>
+				On the example, we could see what it looks like to transfer 15 bits of information from the <b>Master</b> to the <b>Slave</b>. Communication only begins when the NSS is low and one bit is sent for every clock pulse. <br><br>
+				Because the LCD display does not send back information to the microcontroller, we only use 3 of the 4 wires: <b>MOSI</b>, <b>SCK</b> and <b>NSS</b>. The Baud rate (or the frequency at which the bits are transferred) is controlled by the serial clock. In the STM32 microcontroller, we can configure the Baud rate in first SPI control register. The first SPI control register consists of 16 bits each with their own function. <br><br>
+				<ul class = "shift">
+					<li><b>SPI1->CR1 &= ~SPI_CR1_BR;</b></li> This line of code clears bits 3 to 5 which therefore selects the maximum Baud rate. fPCLK is 48 MHz for the STM32 microcontroller. As a result, we would be transferring bits at a rate of 48 MHz / 2 = 24 MHZ or 24 million bits per second. 
+					<li><b>SPI1->CR1 |= SPI_CR1_MSTR;</b></li> This line of code sets bit 2 which therefore establishes the microcontroller as the <b>Master</b>. If this bit was cleared, the microcontroller would take on the role of <b>Slave</b>.
+				</ul>
+			</div>
+			<div class = "image2">
+				<img src = "images/spi.png" class = "pic" width = "100%" alt = "">
+			</div>
+			
+			<div>
+
+			</div>
+
+		</div>
+
+
+		<br>
 		<div class = "pcb_design">
 			<div class = "kicad">
 				<img src = "images/pcb2.jpg" class = "pic" width = "100%" alt = "">
@@ -76,7 +108,7 @@
 			</div>
 			<div class = "pcb">
 				<div class = "text">PCB design and soldering</div>
-				On the hardware side, we drew the schematic and completed the layout using Altium from the ground up, referencing the Kicad design. We were able to utilize the huge online component library to quickly place component footprints and buy them online at the same time. The final PCB soldering process had some obstacles including being unable to reset the microcontroller. However, after some debugging, it turned out the issue was that we forgot to connect VCCA to 3V. After flywiring it to the 3V rail, the PCB worked as expected.
+				On the hardware side, we drew the schematic and completed the layout using <b>Altium</b> from the ground up, referencing the Kicad design. We were able to utilize the huge online component library to quickly place component footprints and buy them online at the same time. The final PCB soldering process had some obstacles including being unable to reset the microcontroller. However, after some debugging, it turned out the issue was that we forgot to connect VCCA to 3V. After flywiring it to the 3V rail, the PCB worked as expected.
 			</div>
 		</div>
 		<br>

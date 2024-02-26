@@ -171,6 +171,15 @@
 	position: relative;
 }
 
+.spi_info {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
+	top: 100px;
+	position: relative;
+}
+
 .algorithm3 {
 	font-family: 'Poppins', sans-serif;
 	color: #00274c;
@@ -183,9 +192,28 @@
 	width: 50%;
 }
 
+.spi {
+	font-family: 'Poppins', sans-serif;
+	color: #00274c;
+	text-align: justify;
+	background: #e3e3e3;
+	position: relative;
+	left: 2%;
+	border-radius: 15px;
+	padding: 10px;
+	width: 60%;
+}
+
 .image1 {
 	position: relative;
 	width: 45%;
+	right: 2%;
+}
+
+.image2 {
+	position: relative;
+	width: 35%;
+	left: 1%;
 	right: 2%;
 }
 
@@ -280,14 +308,18 @@
 	right: 2%;
 }
 
+.shift {
+	margin-left: 20px;
+}
+
 @media (max-width: 1000px){
-	.final1, .final2, .final3, .pcb1, .pcb2, .pcb3, .kicad, .solder, .algorithm3, .initial_testing, .algorithm, .vid1 {
+	.spi, .final1, .final2, .final3, .pcb1, .pcb2, .pcb3, .kicad, .solder, .algorithm3, .initial_testing, .algorithm, .vid1 {
 		margin-bottom: 15px;
 	}
-	.pcb, .algorithm3, .algorithm2, .algorithm, .information {
+	.spi, .pcb, .algorithm3, .algorithm2, .algorithm, .information {
 		padding: 15px;
 	}
-	.final1, .final2, .final3, .pcb1, .pcb2, .pcb3, .kicad, .pcb, .solder, .algorithm3, .image1, .initial_testing, .algorithm2, .algorithm, .game_play, .vid1, .information {
+	.spi, .final1, .final2, .final3, .pcb1, .pcb2, .pcb3, .kicad, .pcb, .solder, .algorithm3, .image1, .image2, .initial_testing, .algorithm2, .algorithm, .game_play, .vid1, .information {
 		flex: 100%;
 		left: 0%;
 		right: 0%;
