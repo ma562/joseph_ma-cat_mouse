@@ -29,7 +29,6 @@
 					An STM32F091RCT6 ARM microcontroller with 256 KB Flash memory and 32KB SRAM was used to program the game. SPI (Serial Peripheral Interface) was used to send data between the microcontroller and LCD display. The type of touch screen used was a 3.2" ILI9341 TFT LCD with breakout board from Adafruit, which had a display of 320*240 resolution. It had a four-wire resistive touchscreen and we wrote a simple driver for it to detect single touch locations. DAC (Digital to Analog converter) was used to convert and generate music. ADC (Analog to Digital converter) was used to communicate the touch screen data. Timers and interrupts were used to listen and respond to any instructions depending on what the user was doing (e.g. pressing a button in the menu). GPIO was used to receive input from push buttons.  <br><br>
 
 					Click <b><a href = "https://github.com/ma562/ece362_finalproj" target = "_blank">here</a></b> to view the source code. Most of the algorithm can be found in ece362_finalproj/src/support.c.
-
 					 <br>
 				</p>
 			</div>
@@ -42,6 +41,18 @@
 			</div>
 			<div class = "game_play">
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/tFBFJbj3igg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+		<br>
+		<div class = "dijkstra_info">
+			<div class = "dijkstra">
+				<div class = "text">Dijkstra's Algorithm in action</div>
+				An example maze figure is shown where the cat is on the top left: coordinates (row 0, column 0). And the mouse is on the bottom right: coordinates (row 7, column 6). Each number on the 8 by 8 matrix represents the shortest distance from the mouse to that coordinate. A value of <b>8 x 8 = 64</b> is encoded into the path length of each wall tile. The wall tile coordinates highlighted in red show the higher values which ensure the cat will not attempt to walk through a wall. The shortest optimal path found from the mouse to the cat is highlighted in yellow. By backtracking through this path, the cat would be able to reach the mouse quickly.
+				<br><br>
+				The path found through the algorithm for the cat to take is as follows with the first index of each tuple representing rows and the second columns: <br><br><b>(1, 0) -> (2, 0) -> (2, 1) -> (2, 2) -> (3, 2) -> (4, 2) -> (5, 2) -> (5, 3) -> (6, 3) -> (7, 3) -> (7, 4) -> (7, 5) -> (7, 6) </b>
+			</div>
+			<div class = "dijkstra_image">
+				<img src = "images/path.png" class = "pic" width = "100%" alt = "">
 			</div>
 		</div>
 		<br>
@@ -78,7 +89,7 @@
 					<li><b>NSS</b>(Negative Slave Select or CS/Chip Select): Selects which slave to communicate with. Starts and ends communcation. The logic is active-low so when it is low, communication begins and when it is high, communcation ends.
 				</ul>
 				<br>
-				On the example, we could see what it looks like to transfer 15 bits of information from the <b>Master</b> to the <b>Slave</b>. Communication only begins when the NSS is low and one bit is sent for every clock pulse. <br><br>
+				On the example, we could see what it looks like to transfer 15 bits of information from the <b>Master</b> to the <b>Slave</b>. Communication only begins when the <b>NSS</b> is low and one bit is sent for every clock pulse. <br><br>
 				Because the LCD display does not send back information to the microcontroller, we only use 3 of the 4 wires: <b>MOSI</b>, <b>SCK</b> and <b>NSS</b>. The Baud rate (or the frequency at which the bits are transferred) is controlled by the serial clock. In the STM32 microcontroller, we can configure the Baud rate in first SPI control register. The first SPI control register consists of 16 bits each with their own function. <br><br>
 				<ul class = "shift">
 					<li><b>SPI1->CR1 &= ~SPI_CR1_BR;</b></li> This line of code clears bits 3 to 5 which therefore selects the maximum Baud rate. fPCLK is 48 MHz for the STM32 microcontroller. As a result, we would be transferring bits at a rate of 48 MHz / 2 = 24 MHZ or 24 million bits per second. 
