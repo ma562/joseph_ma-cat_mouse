@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale = 1.0">
-		<title>Cat & Mouse 2: Reinforcement Learning</title>
+		<title>Cat & Mouse</title>
 		<link rel="icon" href="images/jm.png">
 		<link rel = "stylesheet" href="style.css">
 	</head>
 
 	<nav class = "navbar">
 		<div class = "max-width">
-			<div class = "logo"><a href="#">Cat & Mouse 2: Reinforcement Learning</a></div>
+			<div class = "logo"><a href="#">Cat & Mouse</a></div>
 			<ul class = "menu">
 				<li><a href="https://joseph-ma.com">Go Back</a></li>
 			</ul>
@@ -20,24 +20,17 @@
 	<body>
 		<div class = "top_info">
 			<div class = "vid1">
-				<iframe width="580" height="400" src="https://www.youtube.com/embed/Y97T-getn5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/Y97T-getn5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class = "information">
 				<div class = "text">About</div>
 				<p>
-					Cat and Mouse 2: Reinforcement Learning builds upon the foundations of the original <b><a href = "https://ma562.github.io/joseph_ma-cat_mouse/" target = "_blank">Cat and Mouse Project</a></b>. Previously, the cat autonomously navigated a maze using <b><a href = "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target = "_blank">Dijkstra's algorithm</a></b> to chase a human-controlled mouse. In this sequel, we eliminate the human element by introducing a mouse driven by <b><a href = "https://en.wikipedia.org/wiki/Q-learning" target = "_blank">Q-learning</a></b>, a model-free <b><a href = "https://en.wikipedia.org/wiki/Reinforcement_learning" target = "_blank">reinforcement learning algorithm</a></b>.<br><br>
+					The game involves a cat which is programmed to be an "AI" with the ability to move autonomously and automatically to chase the mouse (controlled by the user through push buttons). The Cat & Mouse game was prototyped on a breadboard and finalized on a hand-held PCB assembly. Background music was played through an audio jack and the display screen was designed to be a selective menu with touch screen.<br><br>
+					An STM32F091RCT6 ARM microcontroller with 256 KB Flash memory and 32KB SRAM was used to program the game. SPI (Serial Peripheral Interface) was used to send data between the microcontroller and LCD display. The type of touch screen used was a 3.2" ILI9341 TFT LCD with breakout board from Adafruit, which had a display of 320*240 resolution. It had a four-wire resistive touchscreen and we wrote a simple driver for it to detect single touch locations. DAC (Digital to Analog converter) was used to convert and generate music. ADC (Analog to Digital converter) was used to communicate the touch screen data. Timers and interrupts were used to listen and respond to any instructions depending on what the user was doing (e.g. pressing a button in the menu). GPIO was used to receive input from push buttons.  <br><br>
 
-					In the new setup, once the mouse achieves near-perfect escape capabilities, its skills are further used to train a new, initially untrained cat. This cat is initially like a baby as it uses similar Q-learning techniques to adapt based on interactions with the expert mouse. Eventually, this newly trained cat outperforms the Dijkstra programmed cat due to its ability to understand the negative consequences of allowing the mouse to escape the maze. <br><br>
-
-					The cycle continues: the newly trained cat then serves as a trainer for another new mouse. Through this generational training approach, each iteration refines their strategies, enhancing both the cat's and mouse's abilities to navigate the maze more effectively.<br>
+					Click <b><a href = "https://github.com/ma562/ece362_finalproj" target = "_blank">here</a></b> to view the source code. Most of the algorithm can be found in ece362_finalproj/src/support.c.
+					 <br>
 				</p>
-				<div class="button-container">
-				    <a href="https://ma562.github.io/dijkstra-vs-q-learning-demo/" target = "_blank" class="learn-more-button">Dijkstra 🐱 vs Q1 🐭</a>
-				    <a href="https://ma562.github.io/dijkstra-vs-q2-learning-demo/" target = "_blank" class="learn-more-button">Dijkstra 🐱 vs Q2 🐭</a>
-				    <a href=https://ma562.github.io/q_learning1_vs_q_learning1_demo/ target = "_blank" class="learn-more-button">Q1 🐱 vs Q2 🐭</a>
-				    <a href=https://ma562.github.io/q_learning2_vs_q_learning1_demo/ target = "_blank" class="learn-more-button">Q2 🐱 vs Q1 🐭</a>
-				    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target = "_blank" class="learn-more-button">Train your own mouse!</a>
-				</div>
 			</div>
 		</div>
 		<br>

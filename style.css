@@ -7,50 +7,6 @@
 	text-decoration: none;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Space between buttons */
-    margin-top: 20px; /* Space from the text above */
-}
-
-.learn-more-button {
-    padding: 10px 20px;
-    background-color: #007BFF; /* Blue background */
-    color: white; /* White text */
-    text-decoration: none;
-    border-radius: 5px; /* Rounded corners */
-    font-family: 'Poppins', sans-serif; /* Consistent font */
-    font-size: 14px; /* Readable font size */
-    font-weight: 500; /* Medium weight */
-    box-shadow: 0 5px #0056b3; /* Simulates the 'pressable' effect */
-    transition: all 0.3s ease;
-}
-
-.learn-more-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    box-shadow: 0 2px #003c82; /* Adjusts the shadow to simulate pressing */
-}
-
-.learn-more-button:active {
-    box-shadow: 0 1px #003c82; /* Even smaller shadow for when the button is actually pressed */
-    transform: translateY(4px); /* Moves the button down to mimic pressing */
-}
-
-@media (max-width: 750px) {
-    .learn-more-button {
-        font-size: 16px; /* Slightly smaller text for small screens */
-        padding: 8px 16px; /* Smaller padding for a compact look */
-    }
-
-    .button-container {
-        flex-direction: column; /* Stack buttons vertically on smaller screens */
-        gap: 5px;
-    }
-}
-
-
-
 .max-width{
 	max-width: 1300px;
 	padding: 0 80px;
@@ -116,7 +72,7 @@
 	align-items: center;
 	position: relative;
 	left: 2%;
-	width: 45%;
+	width: 35%;
 	padding: 30px;
 	background: #00274c;
 	border-radius: 20px;
@@ -126,7 +82,7 @@
 .information{
 	font-family: 'Poppins', sans-serif;
 	color: #00274c;
-	width: 50%;
+	width: 60%;
 	text-align: justify;
 	position: relative;
 	right: 2%;
